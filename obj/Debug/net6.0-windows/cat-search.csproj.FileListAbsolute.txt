@@ -18,3 +18,8 @@ C:\Users\christofer.bernardo\Documents\Projetos\cat-search\obj\Debug\net6.0-wind
 C:\Users\christofer.bernardo\Documents\Projetos\cat-search\obj\Debug\net6.0-windows\cat_search.Forms.Favorites.resources
 C:\Users\christofer.bernardo\Documents\Projetos\cat-search\obj\Debug\net6.0-windows\cat_search.Forms.Search.resources
 C:\Users\christofer.bernardo\Documents\Projetos\cat-search\obj\Debug\net6.0-windows\cat_search.FirstWindow.resources
+C:\Users\christofer.bernardo\Documents\Projetos\cat-search\bin\Debug\net6.0-windows\RestSharp.dll
+C:\Users\christofer.bernardo\Documents\Projetos\cat-search\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+C:\Users\christofer.bernardo\Documents\Projetos\cat-search\bin\Debug\net6.0-windows\System.Text.Json.dll
+C:\Users\christofer.bernardo\Documents\Projetos\cat-search\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\christofer.bernardo\Documents\Projetos\cat-search\obj\Debug\net6.0-windows\cat-search.csproj.CopyComplete

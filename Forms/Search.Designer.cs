@@ -36,11 +36,11 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            cbListSpecies = new ComboBox();
-            button1 = new Button();
+            lbTemperament = new Label();
+            lbOrigin = new Label();
+            lbDescription = new Label();
+            cbListBreeds = new ComboBox();
+            btnSearch = new Button();
             button2 = new Button();
             SuspendLayout();
             // 
@@ -109,50 +109,52 @@
             label6.Text = "Descrição";
             label6.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // label7
+            // lbTemperament
             // 
-            label7.Location = new Point(198, 210);
-            label7.Name = "label7";
-            label7.Size = new Size(121, 40);
-            label7.TabIndex = 3;
-            label7.Text = "Resultado";
-            label7.TextAlign = ContentAlignment.MiddleLeft;
+            lbTemperament.Location = new Point(198, 210);
+            lbTemperament.Name = "lbTemperament";
+            lbTemperament.Size = new Size(224, 40);
+            lbTemperament.TabIndex = 3;
+            lbTemperament.Text = "Resultado";
+            lbTemperament.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // label8
+            // lbOrigin
             // 
-            label8.Location = new Point(198, 250);
-            label8.Name = "label8";
-            label8.Size = new Size(121, 40);
-            label8.TabIndex = 3;
-            label8.Text = "Resultado";
-            label8.TextAlign = ContentAlignment.MiddleLeft;
+            lbOrigin.Location = new Point(198, 247);
+            lbOrigin.Name = "lbOrigin";
+            lbOrigin.Size = new Size(224, 40);
+            lbOrigin.TabIndex = 3;
+            lbOrigin.Text = "Resultado";
+            lbOrigin.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // label9
+            // lbDescription
             // 
-            label9.Location = new Point(198, 287);
-            label9.Name = "label9";
-            label9.Size = new Size(121, 40);
-            label9.TabIndex = 3;
-            label9.Text = "Resultado";
-            label9.TextAlign = ContentAlignment.MiddleLeft;
+            lbDescription.Location = new Point(198, 287);
+            lbDescription.Name = "lbDescription";
+            lbDescription.Size = new Size(224, 40);
+            lbDescription.TabIndex = 3;
+            lbDescription.Text = "Resultado";
+            lbDescription.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // cbListSpecies
+            // cbListBreeds
             // 
-            cbListSpecies.FormattingEnabled = true;
-            cbListSpecies.Items.AddRange(new object[] { "Selecione uma Raça", "Abyssinian", "Aegean", "American Bobtail", "American Curl", "American Shorthair", "American Wirehair", "Arabian Mau", "Australian Mist", "Balinese" });
-            cbListSpecies.Location = new Point(198, 157);
-            cbListSpecies.Name = "cbListSpecies";
-            cbListSpecies.Size = new Size(121, 23);
-            cbListSpecies.TabIndex = 4;
+            cbListBreeds.DropDownHeight = 96;
+            cbListBreeds.FormattingEnabled = true;
+            cbListBreeds.IntegralHeight = false;
+            cbListBreeds.Location = new Point(198, 157);
+            cbListBreeds.Name = "cbListBreeds";
+            cbListBreeds.Size = new Size(121, 23);
+            cbListBreeds.TabIndex = 4;
             // 
-            // button1
+            // btnSearch
             // 
-            button1.Location = new Point(266, 347);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 5;
-            button1.Text = "Buscar";
-            button1.UseVisualStyleBackColor = true;
+            btnSearch.Location = new Point(266, 347);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(75, 23);
+            btnSearch.TabIndex = 5;
+            btnSearch.Text = "Buscar";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // button2
             // 
@@ -169,13 +171,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(452, 393);
             Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(cbListSpecies);
-            Controls.Add(label9);
+            Controls.Add(btnSearch);
+            Controls.Add(cbListBreeds);
+            Controls.Add(lbDescription);
             Controls.Add(label6);
-            Controls.Add(label8);
+            Controls.Add(lbOrigin);
             Controls.Add(label5);
-            Controls.Add(label7);
+            Controls.Add(lbTemperament);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(panel1);
@@ -197,11 +199,11 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
-        private Label label8;
-        private Label label9;
-        private ComboBox cbListSpecies;
-        private Button button1;
+        private Label lbTemperament;
+        private Label lbOrigin;
+        private Label lbDescription;
+        private ComboBox cbListBreeds;
+        private Button btnSearch;
         private Button button2;
     }
 }
