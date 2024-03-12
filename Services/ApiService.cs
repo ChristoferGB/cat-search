@@ -1,5 +1,7 @@
 ﻿using cat_search.Model;
+using cat_search.Model.Requests;
 using RestSharp;
+using System.Configuration;
 using System.Text.Json;
 
 namespace cat_search.Services
@@ -8,6 +10,7 @@ namespace cat_search.Services
     {
         private readonly RestClient client;
         private readonly string BASE_URL = "https://api.thecatapi.com/v1/";
+        private readonly string ApiKey;
         private readonly JsonSerializerOptions options = new()
         {
             PropertyNameCaseInsensitive = true,
@@ -16,6 +19,7 @@ namespace cat_search.Services
         public ApiService() 
         {
             client = new RestClient();
+            ApiKey = ConfigurationManager.AppSettings["ApiKey"];
         }
 
         public List<Breed>? GetListOfBreeds()
@@ -32,6 +36,21 @@ namespace cat_search.Services
             RestResponse response = client.Execute(request);
 
             return JsonSerializer.Deserialize<BreedAttributes>(response.Content, options);
+        }
+
+        public RestResponse PostFavoriteBreed(string imageId, string subId)
+        {
+            FavouriteRequest favouriteRequest = new(imageId, subId);
+
+            string json = JsonSerializer.Serialize(favouriteRequest);
+
+            var request = new RestRequest(BASE_URL + "favourites", Method.Post)
+                .AddHeader("x-api-key", ApiKey)
+                .AddBody(json);
+
+            var response = client.Execute(request);
+
+            return response;
         }
     }
 }

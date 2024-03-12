@@ -41,7 +41,7 @@
             lbDescription = new Label();
             cbListBreeds = new ComboBox();
             btnSearch = new Button();
-            button2 = new Button();
+            btnFavorite = new Button();
             SuspendLayout();
             // 
             // label1
@@ -145,6 +145,7 @@
             cbListBreeds.Name = "cbListBreeds";
             cbListBreeds.Size = new Size(121, 23);
             cbListBreeds.TabIndex = 4;
+            cbListBreeds.SelectedValueChanged += cbListBreeds_SelectedValueChanged;
             // 
             // btnSearch
             // 
@@ -156,21 +157,22 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
-            // button2
+            // btnFavorite
             // 
-            button2.Location = new Point(347, 347);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 5;
-            button2.Text = "Favoritar";
-            button2.UseVisualStyleBackColor = true;
+            btnFavorite.Location = new Point(347, 347);
+            btnFavorite.Name = "btnFavorite";
+            btnFavorite.Size = new Size(75, 23);
+            btnFavorite.TabIndex = 5;
+            btnFavorite.Text = "Favoritar";
+            btnFavorite.UseVisualStyleBackColor = true;
+            btnFavorite.Click += btnFavorite_Click;
             // 
             // Search
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(452, 393);
-            Controls.Add(button2);
+            Controls.Add(btnFavorite);
             Controls.Add(btnSearch);
             Controls.Add(cbListBreeds);
             Controls.Add(lbDescription);
@@ -204,6 +206,6 @@
         private Label lbDescription;
         private ComboBox cbListBreeds;
         private Button btnSearch;
-        private Button button2;
+        private Button btnFavorite;
     }
 }
