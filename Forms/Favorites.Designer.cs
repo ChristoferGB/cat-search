@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Favorites));
             lboxFavourites = new ListBox();
-            button1 = new Button();
+            btnDeleteFavourite = new Button();
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
@@ -45,14 +45,15 @@
             lboxFavourites.Size = new Size(362, 214);
             lboxFavourites.TabIndex = 6;
             // 
-            // button1
+            // btnDeleteFavourite
             // 
-            button1.Location = new Point(297, 351);
-            button1.Name = "button1";
-            button1.Size = new Size(109, 30);
-            button1.TabIndex = 7;
-            button1.Text = "Excluir Favorito";
-            button1.UseVisualStyleBackColor = true;
+            btnDeleteFavourite.Location = new Point(297, 351);
+            btnDeleteFavourite.Name = "btnDeleteFavourite";
+            btnDeleteFavourite.Size = new Size(109, 30);
+            btnDeleteFavourite.TabIndex = 7;
+            btnDeleteFavourite.Text = "Excluir Favorito";
+            btnDeleteFavourite.UseVisualStyleBackColor = true;
+            btnDeleteFavourite.Click += btnDeleteFavourite_Click;
             // 
             // panel1
             // 
@@ -88,7 +89,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(452, 393);
-            Controls.Add(button1);
+            Controls.Add(btnDeleteFavourite);
             Controls.Add(lboxFavourites);
             Controls.Add(panel1);
             Controls.Add(label2);
@@ -102,7 +103,7 @@
 
         #endregion
         private ListBox lboxFavourites;
-        private Button button1;
+        private Button btnDeleteFavourite;
         private Panel panel1;
         private Label label2;
         private Label label1;

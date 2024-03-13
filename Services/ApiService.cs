@@ -26,6 +26,7 @@ namespace cat_search.Services
         public List<Breed>? GetListOfBreeds()
         {
             var request = new RestRequest(BASE_URL + "breeds/", Method.Get);
+
             RestResponse response = client.Execute(request);
 
             return JsonSerializer.Deserialize<List<Breed>>(response.Content, options);
@@ -34,6 +35,7 @@ namespace cat_search.Services
         public BreedAttributes? GetBreedAttributes(string id)
         {
             var request = new RestRequest(BASE_URL + "breeds/" + id, Method.Get);
+
             RestResponse response = client.Execute(request);
 
             return JsonSerializer.Deserialize<BreedAttributes>(response.Content, options);
@@ -57,6 +59,7 @@ namespace cat_search.Services
         public List<Favourite> GetFavourites()
         {
             var request = new RestRequest(BASE_URL + "favourites/", Method.Get).AddHeader("x-api-key", ApiKey);
+
             RestResponse response = client.Execute(request);
 
             var favouritesResponseList = JsonSerializer.Deserialize<List<FavouritesResponse>>(response.Content, options);
@@ -72,6 +75,16 @@ namespace cat_search.Services
             }
 
             return favouritesList;
+        }
+
+        public RestResponse DeleteFavourite(int favouriteId)
+        {
+            var request = new RestRequest(BASE_URL + "favourites/" + favouriteId, Method.Delete)
+                .AddHeader("x-api-key", ApiKey);
+
+            RestResponse response = client.Execute(request);
+
+            return response;
         }
     }
 }
