@@ -1,5 +1,6 @@
 ﻿using cat_search.Model;
 using cat_search.Model.Requests;
+using cat_search.Model.Responses;
 using RestSharp;
 using System.Configuration;
 using System.Text.Json;
@@ -51,6 +52,26 @@ namespace cat_search.Services
             var response = client.Execute(request);
 
             return response;
+        }
+
+        public List<Favourite> GetFavourites()
+        {
+            var request = new RestRequest(BASE_URL + "favourites/", Method.Get).AddHeader("x-api-key", ApiKey);
+            RestResponse response = client.Execute(request);
+
+            var favouritesResponseList = JsonSerializer.Deserialize<List<FavouritesResponse>>(response.Content, options);
+
+            List<Favourite> favouritesList = new();
+
+            foreach (var favouriteResponse in favouritesResponseList)
+            {
+                var attributes = GetBreedAttributes(favouriteResponse.Sub_id);
+                Favourite favourite = new(favouriteResponse.Id, favouriteResponse.Image_id, favouriteResponse.Sub_id);
+                favourite.SetName(attributes.Name);
+                favouritesList.Add(favourite);
+            }
+
+            return favouritesList;
         }
     }
 }

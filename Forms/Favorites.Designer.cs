@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Favorites));
-            listBox1 = new ListBox();
+            lboxFavourites = new ListBox();
             button1 = new Button();
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
             SuspendLayout();
             // 
-            // listBox1
+            // lboxFavourites
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(44, 121);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(362, 214);
-            listBox1.TabIndex = 6;
+            lboxFavourites.FormattingEnabled = true;
+            lboxFavourites.ItemHeight = 15;
+            lboxFavourites.Location = new Point(44, 121);
+            lboxFavourites.Name = "lboxFavourites";
+            lboxFavourites.Size = new Size(362, 214);
+            lboxFavourites.TabIndex = 6;
             // 
             // button1
             // 
@@ -89,7 +89,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(452, 393);
             Controls.Add(button1);
-            Controls.Add(listBox1);
+            Controls.Add(lboxFavourites);
             Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -101,7 +101,7 @@
         }
 
         #endregion
-        private ListBox listBox1;
+        private ListBox lboxFavourites;
         private Button button1;
         private Panel panel1;
         private Label label2;
