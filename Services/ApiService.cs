@@ -1,4 +1,5 @@
 ﻿using cat_search.Model;
+using cat_search.Model.Exceptions;
 using cat_search.Model.Requests;
 using cat_search.Model.Responses;
 using RestSharp;
@@ -23,22 +24,28 @@ namespace cat_search.Services
             ApiKey = ConfigurationManager.AppSettings["ApiKey"];
         }
 
-        public List<Breed>? GetListOfBreeds()
+        public List<Breed> GetListOfBreeds()
         {
             var request = new RestRequest(BASE_URL + "breeds/", Method.Get);
 
-            RestResponse response = client.Execute(request);
+            RestResponse response = client.Execute(request) ?? throw new ApiNullResponseException();
 
-            return JsonSerializer.Deserialize<List<Breed>>(response.Content, options);
+            List<Breed>? breeds = JsonSerializer.Deserialize<List<Breed>>(response.Content, options);
+
+            return breeds 
+                ?? throw new DeserializationException(response, new Exception("JSON deserialization error: GetListOfBreeds()"));
         }
 
-        public BreedAttributes? GetBreedAttributes(string id)
+        public BreedAttributes GetBreedAttributes(string id)
         {
             var request = new RestRequest(BASE_URL + "breeds/" + id, Method.Get);
 
-            RestResponse response = client.Execute(request);
+            RestResponse response = client.Execute(request) ?? throw new ApiNullResponseException();
 
-            return JsonSerializer.Deserialize<BreedAttributes>(response.Content, options);
+            BreedAttributes? attributes = JsonSerializer.Deserialize<BreedAttributes>(response.Content, options);
+
+            return attributes 
+                ?? throw new DeserializationException(response, new Exception("JSON deserialization error: GetBreedAttributes()"));
         }
 
         public RestResponse PostFavoriteBreed(string imageId, string subId)
@@ -51,7 +58,7 @@ namespace cat_search.Services
                 .AddHeader("x-api-key", ApiKey)
                 .AddBody(json);
 
-            var response = client.Execute(request);
+            RestResponse response = client.Execute(request) ?? throw new ApiNullResponseException();
 
             return response;
         }
@@ -60,17 +67,21 @@ namespace cat_search.Services
         {
             var request = new RestRequest(BASE_URL + "favourites/", Method.Get).AddHeader("x-api-key", ApiKey);
 
-            RestResponse response = client.Execute(request);
+            RestResponse response = client.Execute(request) ?? throw new ApiNullResponseException();
 
-            var favouritesResponseList = JsonSerializer.Deserialize<List<FavouritesResponse>>(response.Content, options);
+            List<FavouritesResponse>? favouritesResponseList = JsonSerializer.Deserialize<List<FavouritesResponse>>(response.Content, options) 
+                ?? throw new DeserializationException(response, new Exception("JSON deserialization error: GetBreedAttributes()"));
 
-            List<Favourite> favouritesList = new();
+            List<Favourite> favouritesList = new(); //incluir automapper
 
             foreach (var favouriteResponse in favouritesResponseList)
             {
                 var attributes = GetBreedAttributes(favouriteResponse.Sub_id);
+
                 Favourite favourite = new(favouriteResponse.Id, favouriteResponse.Image_id, favouriteResponse.Sub_id);
+
                 favourite.SetName(attributes.Name);
+
                 favouritesList.Add(favourite);
             }
 
@@ -82,7 +93,7 @@ namespace cat_search.Services
             var request = new RestRequest(BASE_URL + "favourites/" + favouriteId, Method.Delete)
                 .AddHeader("x-api-key", ApiKey);
 
-            RestResponse response = client.Execute(request);
+            RestResponse response = client.Execute(request) ?? throw new ApiNullResponseException();
 
             return response;
         }

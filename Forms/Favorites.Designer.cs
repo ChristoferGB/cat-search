@@ -29,31 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Favorites));
-            lboxFavourites = new ListBox();
-            btnDeleteFavourite = new Button();
+            lboxFavorites = new ListBox();
+            btnDeleteFavorite = new Button();
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
+            btnReturn = new Button();
             SuspendLayout();
             // 
-            // lboxFavourites
+            // lboxFavorites
             // 
-            lboxFavourites.FormattingEnabled = true;
-            lboxFavourites.ItemHeight = 15;
-            lboxFavourites.Location = new Point(44, 121);
-            lboxFavourites.Name = "lboxFavourites";
-            lboxFavourites.Size = new Size(362, 214);
-            lboxFavourites.TabIndex = 6;
+            lboxFavorites.FormattingEnabled = true;
+            lboxFavorites.ItemHeight = 15;
+            lboxFavorites.Location = new Point(44, 121);
+            lboxFavorites.Name = "lboxFavorites";
+            lboxFavorites.Size = new Size(362, 214);
+            lboxFavorites.TabIndex = 6;
             // 
-            // btnDeleteFavourite
+            // btnDeleteFavorite
             // 
-            btnDeleteFavourite.Location = new Point(297, 351);
-            btnDeleteFavourite.Name = "btnDeleteFavourite";
-            btnDeleteFavourite.Size = new Size(109, 30);
-            btnDeleteFavourite.TabIndex = 7;
-            btnDeleteFavourite.Text = "Excluir Favorito";
-            btnDeleteFavourite.UseVisualStyleBackColor = true;
-            btnDeleteFavourite.Click += btnDeleteFavourite_Click;
+            btnDeleteFavorite.Location = new Point(297, 351);
+            btnDeleteFavorite.Name = "btnDeleteFavorite";
+            btnDeleteFavorite.Size = new Size(109, 30);
+            btnDeleteFavorite.TabIndex = 7;
+            btnDeleteFavorite.Text = "Delete Favorite";
+            btnDeleteFavorite.UseVisualStyleBackColor = true;
+            btnDeleteFavorite.Click += btnDeleteFavourite_Click;
             // 
             // panel1
             // 
@@ -71,7 +72,7 @@
             label2.Name = "label2";
             label2.Size = new Size(417, 37);
             label2.TabIndex = 4;
-            label2.Text = "Aqui você encontra a listagem de raças favoritas";
+            label2.Text = "Here you'll find a list of your favorite breeds";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label1
@@ -80,32 +81,44 @@
             label1.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(159, 30);
+            label1.Size = new Size(136, 30);
             label1.TabIndex = 3;
-            label1.Text = "Meus Favoritos";
+            label1.Text = "My Favorites";
+            // 
+            // btnReturn
+            // 
+            btnReturn.Location = new Point(44, 351);
+            btnReturn.Name = "btnReturn";
+            btnReturn.Size = new Size(95, 30);
+            btnReturn.TabIndex = 8;
+            btnReturn.Text = "Go to Search";
+            btnReturn.UseVisualStyleBackColor = true;
+            btnReturn.Click += btnReturn_Click;
             // 
             // Favorites
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(452, 393);
-            Controls.Add(btnDeleteFavourite);
-            Controls.Add(lboxFavourites);
+            Controls.Add(btnReturn);
+            Controls.Add(btnDeleteFavorite);
+            Controls.Add(lboxFavorites);
             Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Favorites";
-            Text = "Favoritos";
+            Text = "Favorites";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private ListBox lboxFavourites;
-        private Button btnDeleteFavourite;
+        private ListBox lboxFavorites;
+        private Button btnDeleteFavorite;
         private Panel panel1;
         private Label label2;
         private Label label1;
+        private Button btnReturn;
     }
 }

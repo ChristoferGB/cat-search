@@ -1,4 +1,6 @@
-﻿namespace cat_search
+﻿using cat_search.Forms;
+
+namespace cat_search
 {
     partial class FirstWindow
     {
@@ -31,11 +33,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstWindow));
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            menuStrip1 = new MenuStrip();
-            buscarRaçasToolStripMenuItem = new ToolStripMenuItem();
-            meusFavoritosToolStripMenuItem = new ToolStripMenuItem();
+            menu = new MenuStrip();
+            searchBreedsToolStripMenuItem = new ToolStripMenuItem();
+            myFavoritesToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            menuStrip1.SuspendLayout();
+            menu.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -50,36 +52,36 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(102, 277);
+            label1.Location = new Point(111, 270);
             label1.Name = "label1";
-            label1.Size = new Size(259, 30);
+            label1.Size = new Size(241, 30);
             label1.TabIndex = 1;
-            label1.Text = "Bem-vindo ao Cat Search";
+            label1.Text = "Welcome to Cat Search";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // menuStrip1
+            // menu
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { buscarRaçasToolStripMenuItem, meusFavoritosToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(452, 24);
-            menuStrip1.TabIndex = 2;
-            menuStrip1.Text = "menuStrip1";
+            menu.Items.AddRange(new ToolStripItem[] { searchBreedsToolStripMenuItem, myFavoritesToolStripMenuItem });
+            menu.Location = new Point(0, 0);
+            menu.Name = "menu";
+            menu.Size = new Size(452, 24);
+            menu.TabIndex = 2;
+            menu.Text = "menuStrip1";
             // 
-            // buscarRaçasToolStripMenuItem
+            // searchBreedsToolStripMenuItem
             // 
-            buscarRaçasToolStripMenuItem.Name = "buscarRaçasToolStripMenuItem";
-            buscarRaçasToolStripMenuItem.Size = new Size(87, 20);
-            buscarRaçasToolStripMenuItem.Text = "Buscar Raças";
-            buscarRaçasToolStripMenuItem.Click += buscarRaçasToolStripMenuItem_Click;
+            searchBreedsToolStripMenuItem.Name = "searchBreedsToolStripMenuItem";
+            searchBreedsToolStripMenuItem.Size = new Size(92, 20);
+            searchBreedsToolStripMenuItem.Text = "Search Breeds";
+            searchBreedsToolStripMenuItem.Click += searchBreedsToolStripMenuItem_Click;
             // 
-            // meusFavoritosToolStripMenuItem
+            // myFavoritesToolStripMenuItem
             // 
-            meusFavoritosToolStripMenuItem.Name = "meusFavoritosToolStripMenuItem";
-            meusFavoritosToolStripMenuItem.Size = new Size(99, 20);
-            meusFavoritosToolStripMenuItem.Text = "Meus Favoritos";
-            meusFavoritosToolStripMenuItem.Click += meusFavoritosToolStripMenuItem_Click;
+            myFavoritesToolStripMenuItem.Name = "myFavoritesToolStripMenuItem";
+            myFavoritesToolStripMenuItem.Size = new Size(86, 20);
+            myFavoritesToolStripMenuItem.Text = "My Favorites";
+            myFavoritesToolStripMenuItem.Click += myFavoritesToolStripMenuItem_Click;
             // 
             // FirstWindow
             // 
@@ -88,14 +90,14 @@
             ClientSize = new Size(452, 393);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
-            Controls.Add(menuStrip1);
+            Controls.Add(menu);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MainMenuStrip = menuStrip1;
+            MainMenuStrip = menu;
             Name = "FirstWindow";
             Text = "Cat Search";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            menu.ResumeLayout(false);
+            menu.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -104,8 +106,8 @@
 
         private PictureBox pictureBox1;
         private Label label1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem buscarRaçasToolStripMenuItem;
-        private ToolStripMenuItem meusFavoritosToolStripMenuItem;
+        private MenuStrip menu;
+        private ToolStripMenuItem searchBreedsToolStripMenuItem;
+        private ToolStripMenuItem myFavoritesToolStripMenuItem;
     }
 }

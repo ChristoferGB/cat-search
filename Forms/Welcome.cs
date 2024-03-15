@@ -9,16 +9,26 @@ namespace cat_search
             InitializeComponent();
         }
 
-        private void buscarRaçasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void searchBreedsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Hide();
+
             Search searchForm = new();
-            searchForm.ShowDialog();
+
+            searchForm.Closed += (s, args) => Close();
+
+            searchForm.Show();
         }
 
-        private void meusFavoritosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void myFavoritesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Hide();
+
             Favorites favoritesForm = new();
-            favoritesForm.ShowDialog();
+
+            favoritesForm.Closed += (s, args) => Close();
+
+            favoritesForm.Show();
         }
     }
 }
