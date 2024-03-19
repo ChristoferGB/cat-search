@@ -9,19 +9,19 @@ namespace cat_search.Extensions
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                MessageBox.Show("Ação realizada com sucesso!\n" + 
+                MessageBox.Show("Task completed successfully!\n" + 
                     message,
-                    "Sucesso",
+                    "Success",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show($"Erro na execução da ação!\n" +
-                    $"Erro: {response.StatusDescription} -  {response.Content}",
-                    "Aviso",
+                MessageBox.Show($"Error on task execution!\n" +
+                    $"Error: {response.StatusDescription} -  {response.Content}",
+                    "Error",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                    MessageBoxIcon.Error);
             }
         }
 

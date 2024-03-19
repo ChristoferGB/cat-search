@@ -63,7 +63,7 @@ namespace cat_search.Services
             return response;
         }
 
-        public List<Favourite> GetFavourites()
+        public List<Favourite> GetFavorites()
         {
             var request = new RestRequest(BASE_URL + "favourites/", Method.Get).AddHeader("x-api-key", ApiKey);
 
@@ -88,7 +88,7 @@ namespace cat_search.Services
             return favouritesList;
         }
 
-        public RestResponse DeleteFavourite(int favouriteId)
+        public RestResponse DeleteFavorite(int favouriteId)
         {
             var request = new RestRequest(BASE_URL + "favourites/" + favouriteId, Method.Delete)
                 .AddHeader("x-api-key", ApiKey);

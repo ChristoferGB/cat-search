@@ -8,7 +8,7 @@ namespace cat_search.Forms
     public partial class Favorites : Form
     {
         private readonly ApiService apiService;
-        private readonly List<Favourite> favourites;
+        private readonly List<Favourite> favorites;
 
         public Favorites()
         {
@@ -18,11 +18,11 @@ namespace cat_search.Forms
 
             try
             {
-                favourites = apiService.GetFavourites();
+                favorites = apiService.GetFavorites();
 
-                var favouritesNames = favourites.Select(f => f.Name).ToArray();
+                var favoritesNames = favorites.Select(f => f.Name).ToArray();
 
-                lboxFavorites.Items.AddRange(favouritesNames);
+                lboxFavorites.Items.AddRange(favoritesNames);
 
                 if (lboxFavorites.Items.Count == 0)
                     btnDeleteFavorite.Enabled = false;
@@ -33,30 +33,25 @@ namespace cat_search.Forms
             }
         }
 
-        private void btnDeleteFavourite_Click(object sender, EventArgs e)
+        private void btnDeleteFavorite_Click(object sender, EventArgs e)
         {
-            if (lboxFavorites.SelectedItem is not string favouriteName)
-            {
-                MessageBox.Show("You must choose a breed to remove from the favorites list!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+            string? favoriteName = ValidateSelectedFavorite();
 
+            if (string.IsNullOrEmpty(favoriteName))
                 return;
-            }
 
             try
             {
-                int favouriteId = favourites.Where(x => x.Name == favouriteName)
+                int favouriteId = favorites.Where(x => x.Name == favoriteName)
                         .Select(x => x.Id)
                         .FirstOrDefault();
 
-                var response = apiService.DeleteFavourite(favouriteId);
+                var response = apiService.DeleteFavorite(favouriteId);
 
                 if (response.StatusCode == HttpStatusCode.OK)
-                    lboxFavorites.Items.Remove(favouriteName);
+                    lboxFavorites.Items.Remove(favoriteName);
 
-                response.ShowMessageBox($"Breed {favouriteName} deleted from the favorites list successfully!");
+                response.ShowMessageBox($"Breed {favoriteName} deleted from the favorites list successfully!");
 
                 if (lboxFavorites.Items.Count == 0)
                     btnDeleteFavorite.Enabled = false;
@@ -76,6 +71,21 @@ namespace cat_search.Forms
             searchForm.Closed += (s, args) => Close();
 
             searchForm.Show();
+        }
+
+        private string? ValidateSelectedFavorite()
+        {
+            if (lboxFavorites.SelectedItem is not string favouriteName)
+            {
+                MessageBox.Show("You must choose a breed to remove from the favorites list!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return null;
+            }
+
+            return favouriteName;
         }
     }
 }

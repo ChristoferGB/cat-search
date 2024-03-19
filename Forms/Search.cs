@@ -49,51 +49,37 @@ namespace cat_search.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (selectedBreed == null)
+            if (ValidateSelectedBreed("You must choose a breed before retrieving its informations!"))
             {
-                MessageBox.Show("You must choose a breed before retrieving its informations!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                try
+                {
+                    var attributes = apiService.GetBreedAttributes(selectedBreed.Id);
 
-                return;
-            }
-
-            try
-            {
-                var attributes = apiService.GetBreedAttributes(selectedBreed.Id);
-
-                lbTemperament.Text = attributes.Temperament;
-                lbOrigin.Text = attributes.Origin;
-                lbDescription.Text = attributes.Description;
-            }
-            catch (Exception ex)
-            {
-                ex.ShowApplicationErrorMessageBox();
+                    lbTemperament.Text = attributes.Temperament;
+                    lbOrigin.Text = attributes.Origin;
+                    lbDescription.Text = attributes.Description;
+                }
+                catch (Exception ex)
+                {
+                    ex.ShowApplicationErrorMessageBox();
+                }
             }
         }
 
         private void btnFavorite_Click(object sender, EventArgs e)
         {
-            if (selectedBreed == null)
+            if (ValidateSelectedBreed("You must choose a breed before favorite it!"))
             {
-                MessageBox.Show("You must choose a breed before favorite it!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                try
+                {
+                    var response = apiService.PostFavoriteBreed(selectedBreed.Reference_Image_Id, selectedBreed.Id);
 
-                return;
-            }
-
-            try
-            {
-                var response = apiService.PostFavoriteBreed(selectedBreed.Reference_Image_Id, selectedBreed.Id);
-
-                response.ShowMessageBox($"Breed {selectedBreed.Name} favorited successfully!");
-            }
-            catch (Exception ex)
-            {
-                ex.ShowApplicationErrorMessageBox();
+                    response.ShowMessageBox($"Breed {selectedBreed.Name} favorited successfully!");
+                }
+                catch (Exception ex)
+                {
+                    ex.ShowApplicationErrorMessageBox();
+                }
             }
         }
 
@@ -106,6 +92,21 @@ namespace cat_search.Forms
             favoritesForm.Closed += (s, args) => Close();
 
             favoritesForm.Show();
+        }
+
+        private bool ValidateSelectedBreed(string warningMessage)
+        {
+            if (selectedBreed == null)
+            {
+                MessageBox.Show(warningMessage,
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return false;
+            }
+
+            return true;
         }
     }
 }

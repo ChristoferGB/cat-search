@@ -54,7 +54,7 @@
             btnDeleteFavorite.TabIndex = 7;
             btnDeleteFavorite.Text = "Delete Favorite";
             btnDeleteFavorite.UseVisualStyleBackColor = true;
-            btnDeleteFavorite.Click += btnDeleteFavourite_Click;
+            btnDeleteFavorite.Click += btnDeleteFavorite_Click;
             // 
             // panel1
             // 
@@ -70,7 +70,7 @@
             label2.ImageAlign = ContentAlignment.MiddleLeft;
             label2.Location = new Point(12, 39);
             label2.Name = "label2";
-            label2.Size = new Size(417, 37);
+            label2.Size = new Size(429, 37);
             label2.TabIndex = 4;
             label2.Text = "Here you'll find a list of your favorite breeds";
             label2.TextAlign = ContentAlignment.MiddleLeft;
