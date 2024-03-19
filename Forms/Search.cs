@@ -7,15 +7,13 @@ namespace cat_search.Forms
 {
     public partial class Search : Form
     {
-        private readonly ApiService apiService;
-        private readonly List<Breed> breeds;
+        private readonly ApiService apiService = new();
+        private readonly List<Breed> breeds = new();
         private Breed? selectedBreed;
 
         public Search()
         {
             InitializeComponent();
-
-            apiService = new ApiService();
 
             try
             {

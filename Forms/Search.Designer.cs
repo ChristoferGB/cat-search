@@ -127,7 +127,7 @@
             // 
             lbDescription.Location = new Point(198, 298);
             lbDescription.Name = "lbDescription";
-            lbDescription.Size = new Size(224, 179);
+            lbDescription.Size = new Size(224, 221);
             lbDescription.TabIndex = 3;
             // 
             // cbListBreeds
@@ -143,7 +143,7 @@
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(266, 481);
+            btnSearch.Location = new Point(266, 533);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(75, 23);
             btnSearch.TabIndex = 5;
@@ -153,7 +153,7 @@
             // 
             // btnFavorite
             // 
-            btnFavorite.Location = new Point(347, 481);
+            btnFavorite.Location = new Point(347, 533);
             btnFavorite.Name = "btnFavorite";
             btnFavorite.Size = new Size(75, 23);
             btnFavorite.TabIndex = 5;
@@ -163,7 +163,7 @@
             // 
             // btnMyFavorites
             // 
-            btnMyFavorites.Location = new Point(28, 481);
+            btnMyFavorites.Location = new Point(28, 533);
             btnMyFavorites.Name = "btnMyFavorites";
             btnMyFavorites.Size = new Size(93, 23);
             btnMyFavorites.TabIndex = 6;
@@ -175,7 +175,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(452, 524);
+            ClientSize = new Size(452, 569);
             Controls.Add(btnMyFavorites);
             Controls.Add(btnFavorite);
             Controls.Add(btnSearch);

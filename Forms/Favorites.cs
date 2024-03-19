@@ -7,14 +7,12 @@ namespace cat_search.Forms
 {
     public partial class Favorites : Form
     {
-        private readonly ApiService apiService;
-        private readonly List<Favourite> favorites;
+        private readonly ApiService apiService = new();
+        private readonly List<Favorite> favorites = new();
 
         public Favorites()
         {
             InitializeComponent();
-
-            apiService = new ApiService();
 
             try
             {

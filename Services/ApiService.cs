@@ -1,7 +1,6 @@
 ﻿using cat_search.Model;
 using cat_search.Model.Exceptions;
 using cat_search.Model.Requests;
-using cat_search.Model.Responses;
 using RestSharp;
 using System.Configuration;
 using System.Text.Json;
@@ -10,19 +9,13 @@ namespace cat_search.Services
 {
     public class ApiService
     {
-        private readonly RestClient client;
-        private readonly string BASE_URL = "https://api.thecatapi.com/v1/";
-        private readonly string ApiKey;
+        private readonly RestClient client = new();
         private readonly JsonSerializerOptions options = new()
         {
             PropertyNameCaseInsensitive = true,
         };
-
-        public ApiService() 
-        {
-            client = new RestClient();
-            ApiKey = ConfigurationManager.AppSettings["ApiKey"];
-        }
+        private readonly string ApiKey = ConfigurationManager.AppSettings["ApiKey"];
+        private const string BASE_URL = "https://api.thecatapi.com/v1/";
 
         public List<Breed> GetListOfBreeds()
         {
@@ -50,9 +43,9 @@ namespace cat_search.Services
 
         public RestResponse PostFavoriteBreed(string imageId, string subId)
         {
-            FavouriteRequest favouriteRequest = new(imageId, subId);
+            FavouriteRequest favoriteRequest = new(imageId, subId);
 
-            string json = JsonSerializer.Serialize(favouriteRequest);
+            string json = JsonSerializer.Serialize(favoriteRequest);
 
             var request = new RestRequest(BASE_URL + "favourites", Method.Post)
                 .AddHeader("x-api-key", ApiKey)
@@ -63,29 +56,23 @@ namespace cat_search.Services
             return response;
         }
 
-        public List<Favourite> GetFavorites()
+        public List<Favorite> GetFavorites()
         {
             var request = new RestRequest(BASE_URL + "favourites/", Method.Get).AddHeader("x-api-key", ApiKey);
 
             RestResponse response = client.Execute(request) ?? throw new ApiNullResponseException();
 
-            List<FavouritesResponse>? favouritesResponseList = JsonSerializer.Deserialize<List<FavouritesResponse>>(response.Content, options) 
+            List<Favorite>? favoritesList = JsonSerializer.Deserialize<List<Favorite>>(response.Content, options) 
                 ?? throw new DeserializationException(response, new Exception("JSON deserialization error: GetBreedAttributes()"));
 
-            List<Favourite> favouritesList = new(); //incluir automapper
-
-            foreach (var favouriteResponse in favouritesResponseList)
+            foreach (var favorite in favoritesList)
             {
-                var attributes = GetBreedAttributes(favouriteResponse.Sub_id);
+                var attributes = GetBreedAttributes(favorite.Sub_id);
 
-                Favourite favourite = new(favouriteResponse.Id, favouriteResponse.Image_id, favouriteResponse.Sub_id);
-
-                favourite.SetName(attributes.Name);
-
-                favouritesList.Add(favourite);
+                favorite.SetName(attributes.Name);
             }
 
-            return favouritesList;
+            return favoritesList;
         }
 
         public RestResponse DeleteFavorite(int favouriteId)

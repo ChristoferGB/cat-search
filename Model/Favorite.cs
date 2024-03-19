@@ -1,13 +1,13 @@
 ﻿namespace cat_search.Model
 {
-    public class Favourite
+    public class Favorite
     {
         public int Id { get; set; }
         public string Image_id { get; set; }
         public string Sub_id { get; set; }
         public string? Name { get; set; }
 
-        public Favourite(int id, string image_id, string sub_id)
+        public Favorite(int id, string image_id, string sub_id)
         {
             Id = id;
             Image_id = image_id;
